@@ -1,0 +1,94 @@
+<form [formGroup]="form" class="example-form">
+  <mat-form-field>
+    <mat-label>Matrícula</mat-label>
+    <input matInput formControlName="matricula" />
+    <!-- <mat-error *ngIf="form.get('matricula').hasError('pattern')">
+      Matrícula must have 4 numbers followed by 3 uppercase characters.
+    </mat-error> -->
+    <!-- <mat-error *ngIf="form.get('matricula').hasError('required')">
+      Matrícula is required.
+    </mat-error> -->
+  </mat-form-field>
+
+  <div class="motor-radio-group">
+    <label>Motor:</label>
+    <mat-radio-group formControlName="motor">
+      <mat-radio-button value="diesel">Diesel</mat-radio-button>
+      <mat-radio-button value="gasolina">Gasolina</mat-radio-button>
+      <mat-radio-button value="hibrido">Híbrido</mat-radio-button>
+      <mat-radio-button value="electrico">Eléctrico</mat-radio-button>
+    </mat-radio-group>
+    <!-- <mat-error *ngIf="form.get('motor').hasError('required')">
+      Motor is required.
+    </mat-error> -->
+  </div>
+
+  <div class="accesorios-checkbox-group">
+    <label>Accesorios:</label>
+    <mat-checkbox formControlName="gps">GPS</mat-checkbox>
+    <mat-checkbox formControlName="climatizador">Climatizador</mat-checkbox>
+    <mat-checkbox formControlName="cargadorElectrico">Cargador Eléctrico</mat-checkbox>
+    <!-- <mat-error *ngIf="form.get('gps').hasError('required') ||
+                    form.get('climatizador').hasError('required') ||
+                    form.get('cargadorElectrico').hasError('required')">
+      At least one accesorio is required.
+    </mat-error> -->
+  </div>
+
+  <mat-form-field>
+    <mat-label>Neumáticos</mat-label>
+    <mat-select formControlName="neumaticos">
+      <mat-option value="michelin">Michelin</mat-option>
+      <mat-option value="firestone">Firestone</mat-option>
+      <mat-option value="pirelli">Pirelli</mat-option>
+      <mat-option value="goodyear">Goodyear</mat-option>
+    </mat-select>
+    <!-- <mat-error *ngIf="form.get('neumaticos').hasError('required')">
+      Neumáticos is required.
+    </mat-error> -->
+  </mat-form-field>
+<mat-divider></mat-divider>
+  <button mat-raised-button color="warn" (click)="submitForm()">Enviar</button>
+</form>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="matricula">
+    <th mat-header-cell *matHeaderCellDef> Matricula </th>
+    <td mat-cell *matCellDef="let element"> {{element.matricula}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="motor">
+    <th mat-header-cell *matHeaderCellDef> Motor </th>
+    <td mat-cell *matCellDef="let element"> {{element.motor}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="climatizador">
+    <th mat-header-cell *matHeaderCellDef> Climatizador</th>
+    <td mat-cell *matCellDef="let element"> {{element.climatizador}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="cargadorElectrico">
+    <th mat-header-cell *matHeaderCellDef> Cargador </th>
+    <td mat-cell *matCellDef="let element"> {{element.cargadorElectrico}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="gps">
+    <th mat-header-cell *matHeaderCellDef> GPS </th>
+    <td mat-cell *matCellDef="let element"> {{element.gps}} </td>
+  </ng-container>
+  <ng-container matColumnDef="neumatico">
+    <th mat-header-cell *matHeaderCellDef> Neumatico </th>
+    <td mat-cell *matCellDef="let element"> {{element.neumatico}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+</table>

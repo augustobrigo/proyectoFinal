@@ -1,0 +1,82 @@
+
+      <form [formGroup]="form" class="example-form">
+        <mat-form-field>
+          <mat-label>Código CIF</mat-label>
+          <input matInput formControlName="codigoCIF" />
+          <!-- <mat-error *ngIf="form.get('codigoCIF').hasError('pattern')">
+            Código CIF 8 número y una letra Mayúscula al final
+          </mat-error> -->
+        </mat-form-field>
+<mat-divider></mat-divider>
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" />
+          <!-- <mat-error *ngIf="form.get('nombre').hasError('required')">
+            Nombre is required.
+          </mat-error> -->
+          <!-- <mat-error *ngIf="form.get('nombre').hasError('minlength')">
+            Nombre must be at least 10 characters long.
+          </mat-error>
+          <mat-error *ngIf="form.get('nombre').hasError('maxlength')">
+            Nombre cannot exceed 50 characters.
+          </mat-error> -->
+        </mat-form-field>
+        <mat-divider></mat-divider>
+
+        <mat-form-field>
+          <mat-label>Nota 1</mat-label>
+          <input matInput type="number" formControlName="nota1" />
+          <!-- <mat-error *ngIf="form.get('nota1').hasError('required')">
+            Nota 1 is required.
+          </mat-error> -->
+          <!-- <mat-error *ngIf="form.get('nota1').hasError('min')">
+            Nota 1 must be at least 0.
+          </mat-error> -->
+          <!-- <mat-error *ngIf="form.get('nota1').hasError('max')">
+            Nota 1 cannot exceed 10.
+          </mat-error> -->
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+          <mat-label>Nota 2</mat-label>
+          <input matInput type="number" formControlName="nota2" />
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+          <mat-label>Nota 3</mat-label>
+          <input matInput type="number" formControlName="nota3" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="submitForm()">Enviar</button>
+      </form>
+
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="codigoCIF">
+    <mat-header-cell *matHeaderCellDef>Código CIF</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.codigoCIF }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.nombre }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nota1">
+    <mat-header-cell *matHeaderCellDef>Nota 1</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.nota1 }}</mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="nota2">
+    <mat-header-cell *matHeaderCellDef>Nota 2</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.nota2 }}</mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="nota3">
+    <mat-header-cell *matHeaderCellDef>Nota 3</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.nota3 }}</mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
